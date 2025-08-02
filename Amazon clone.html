@@ -1,110 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazon Clone</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #e3e6e6; }
-    .header {
-      background-color: #131921;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-    }
-    .logo { font-size: 24px; font-weight: bold; }
-    .search-bar {
-      flex: 1;
-      margin: 0 20px;
-    }
-    .search-bar input {
-      width: 100%; padding: 8px;
-    }
-    .nav-links {
-      display: flex; gap: 20px;
-    }
-    .banner {
-      background-image: url('https://m.media-amazon.com/images/I/71nwqPZaNRL._SX3000_.jpg');
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-      animation: slideIn 2s ease;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
-      background: white;
-      padding: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .product:hover {
-      transform: scale(1.03);
-    }
-    .product img {
-      width: 100%; height: 200px; object-fit: contain;
-    }
-    .product h4 { margin: 10px 0; font-size: 16px; }
-    .footer {
-      background: #232f3e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.in Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom colors to match Amazon's branding */
+        :root {
+            --amazon-blue-dark: #131921;
+            --amazon-blue-light: #232f3e;
+            --amazon-orange: #fcd200;
+            --amazon-orange-hover: #f7ca00;
+            --amazon-light-grey: #f1f2f3;
+        }
+
+        .bg-amazon-blue-dark { background-color: var(--amazon-blue-dark); }
+        .bg-amazon-blue-light { background-color: var(--amazon-blue-light); }
+        .bg-amazon-orange { background-color: var(--amazon-orange); }
+        .hover\:bg-amazon-orange-hover:hover { background-color: var(--amazon-orange-hover); }
+        .bg-amazon-light-grey { background-color: var(--amazon-light-grey); }
+
+        /* Custom scrollbar for horizontal scrolling sections */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
 </head>
-<body>
-  <div class="header">
-    <div class="logo">amazon.in</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search Amazon">
-    </div>
-    <div class="nav-links">
-      <div>Hello, Sign In</div>
-      <div>Returns & Orders</div>
-      <div>Cart</div>
-    </div>
-  </div>
+<body class="bg-amazon-light-grey font-sans">
 
-  <div class="banner"></div>
+    <header class="bg-amazon-blue-dark text-white p-3 flex flex-wrap items-center justify-between space-x-4">
+        <a href="#" class="font-bold text-2xl flex-shrink-0">
+            <span class="text-white">amazon.in</span>
+        </a>
 
-  <div class="products">
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/I/61Iz2yy2CKL._AC_UL320_.jpg" alt="Product 1">
-      <h4>Wireless Headphones</h4>
-      <p>₹1,999</p>
-    </div>
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/I/61i2w5f2oQL._AC_UL320_.jpg" alt="Product 2">
-      <h4>Fitness Smartwatch</h4>
-      <p>₹2,999</p>
-    </div>
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/I/81-QB7nDh4L._AC_UL320_.jpg" alt="Product 3">
-      <h4>Book: Atomic Habits</h4>
-      <p>₹499</p>
-    </div>
-    <div class="product">
-      <img src="https://m.media-amazon.com/images/I/61UxfXTUyvL._AC_UL320_.jpg" alt="Product 4">
-      <h4>Gaming Mouse</h4>
-      <p>₹1,299</p>
-    </div>
-  </div>
+        <div class="flex-grow flex items-center max-w-2xl bg-white rounded-md overflow-hidden">
+            <select class="px-2 py-2 text-gray-700 bg-gray-200 border-l border-gray-300 focus:outline-none">
+                <option value="all">All</option>
+                <option value="electronics">Electronics</option>
+                <option value="books">Books</option>
+            </select>
+            <input type="text" placeholder="Search Amazon.in" class="flex-grow px-4 py-2 text-gray-700 focus:outline-none">
+            <button class="bg-amazon-orange px-4 py-2 h-full flex items-center justify-center hover:bg-amazon-orange-hover transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8A4 4 0 008 4zM16.293 14.293a1 1 0 01-1.414 1.414l-2.001-2.002a7.001 7.001 0 111.414-1.414l2.001 2.002z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
 
-  <div class="footer">
-    <p>Back to top</p>
-    <p>&copy; 2025 Amazon Clone. For educational purposes only.</p>
-  </div>
+        <div class="flex items-center text-sm space-x-4 flex-shrink-0 mt-2 md:mt-0">
+            <a href="#" class="flex flex-col">
+                <span class="text-xs">Hello, Sign in</span>
+                <span class="font-bold">Account & Lists</span>
+            </a>
+            <a href="#" class="flex flex-col">
+                <span class="text-xs">Returns</span>
+                <span class="font-bold">& Orders</span>
+            </a>
+            <a href="#" class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span class="font-bold ml-1">Cart</span>
+            </a>
+        </div>
+    </header>
+
+    <nav class="bg-amazon-blue-light text-white p-2 text-sm">
+        <ul class="flex overflow-x-auto no-scrollbar space-x-4 px-2 whitespace-nowrap">
+            <li><a href="#" class="hover:underline">All</a></li>
+            <li><a href="#" class="hover:underline">Mobiles</a></li>
+            <li><a href="#" class="hover:underline">Fashion</a></li>
+            <li><a href="#" class="hover:underline">Electronics</a></li>
+            <li><a href="#" class="hover:underline">Today's Deals</a></li>
+            <li><a href="#" class="hover:underline">Prime</a></li>
+            <li><a href="#" class="hover:underline">Books</a></li>
+            <li><a href="#" class="hover:underline">Home & Kitchen</a></li>
+        </ul>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <section class="relative h-64 md:h-96">
+            <img src="https://plus.unsplash.com/premium_photo-1682096515837-81ef4d728980?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hero Banner" class="w-full h-full object-cover rounded-lg">
+            <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-gray-900 to-transparent w-full text-white rounded-b-lg">
+                <p class="text-sm md:text-base">You are on amazon.in. You can also shop on Amazon USA.</p>
+                <a href="#" class="text-blue-400 hover:text-blue-200 text-sm">Click here to go to amazon.com</a>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
+            <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-xl font-semibold mb-4">Up to 70% off | Electronics</h3>
+                <div class="grid grid-cols-2 gap-2 flex-grow">
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://plus.unsplash.com/premium_photo-1679513691474-73102089c117?q=80&w=1113&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Headphones" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Headphones</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://images.unsplash.com/photo-1612101678636-69a6daeb076e?q=80&w=711&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Smartwatches" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Smartwatches</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Laptops" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Laptops</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://images.unsplash.com/photo-1597939001150-4d20b4c4a8d6?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cameras" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Cameras</span>
+                    </a>
+                </div>
+                <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">See all deals</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-xl font-semibold mb-4">Shop by Category</h3>
+                <div class="grid grid-cols-2 gap-2 flex-grow">
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fashion" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Fashion</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://placehold.co/150x150?text=Home" alt="Home" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Home & Kitchen</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://placehold.co/150x150?text=Beauty" alt="Beauty" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Beauty</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://placehold.co/150x150?text=Books" alt="Books" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Books</span>
+                    </a>
+                </div>
+                <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">Explore more</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
+                <h3 class="text-xl font-semibold mb-2">Sign in for your best experience</h3>
+                <button class="w-full bg-amazon-orange text-gray-900 font-bold py-2 rounded-md hover:bg-amazon-orange-hover transition-colors">
+                    Sign in securely
+                </button>
+                <a href="#" class="text-blue-500 hover:text-blue-700 mt-2 text-sm">New customer? Start here.</a>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-xl font-semibold mb-4">Up to 65% off | Home appliances</h3>
+                <div class="flex-grow flex items-center justify-center">
+                    <img src="https://placehold.co/300x200?text=Home+Appliances" alt="Home Appliances" class="w-full h-auto object-cover rounded-md">
+                </div>
+                <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">See more</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-xl font-semibold mb-4">Inspired by your Browse history</h3>
+                <div class="flex-grow flex items-center justify-center">
+                    <img src="https://placehold.co/300x200/e0b4b4/white?text=Recommended+for+You" alt="Recommended Products" class="w-full h-auto object-cover rounded-md">
+                </div>
+                <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">View your recommendations</a>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+                <h3 class="text-xl font-semibold mb-4">Top deals on Smart TVs</h3>
+                <div class="grid grid-cols-2 gap-2 flex-grow">
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://placehold.co/150x150?text=TV+Brand+1" alt="TV Brand 1" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Sony</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://placehold.co/150x150?text=TV+Brand+2" alt="TV Brand 2" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Samsung</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://placehold.co/150x150?text=TV+Brand+3" alt="TV Brand 3" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">LG</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center">
+                        <img src="https://placehold.co/150x150?text=TV+Brand+4" alt="TV Brand 4" class="w-full h-auto object-cover rounded-md">
+                        <span class="text-xs mt-1">Mi</span>
+                    </a>
+                </div>
+                <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">Shop all TVs</a>
+            </div>
+        </section>
+
+        <section class="my-6">
+            <img src="https://placehold.co/1200x150/f0e0b4/black?text=Limited-time+Offer%3a+Shop+Now" alt="Offer Banner" class="w-full rounded-lg shadow-md">
+        </section>
+
+        <section class="bg-white p-4 rounded-lg shadow-md mt-6">
+            <h2 class="text-2xl font-bold mb-4">Today's Deals</h2>
+            <div class="flex overflow-x-auto no-scrollbar space-x-4 py-2">
+                <div class="flex-shrink-0 w-48">
+                    <img src="https://placehold.co/200x150?text=Deal+1" alt="Deal 1" class="w-full h-auto object-cover rounded-md">
+                    <div class="mt-2">
+                        <span class="bg-red-700 text-white text-xs px-2 py-1 rounded-md">Up to 40% off</span>
+                        <p class="text-xs text-gray-500 mt-1">Deal of the day</p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-48">
+                    <img src="https://placehold.co/200x150?text=Deal+2" alt="Deal 2" class="w-full h-auto object-cover rounded-md">
+                    <div class="mt-2">
+                        <span class="bg-red-700 text-white text-xs px-2 py-1 rounded-md">Up to 25% off</span>
+                        <p class="text-xs text-gray-500 mt-1">Limited time deal</p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-48">
+                    <img src="https://placehold.co/200x150?text=Deal+3" alt="Deal 3" class="w-full h-auto object-cover rounded-md">
+                    <div class="mt-2">
+                        <span class="bg-red-700 text-white text-xs px-2 py-1 rounded-md">Up to 50% off</span>
+                        <p class="text-xs text-gray-500 mt-1">Lightning deal</p>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-48">
+                    <img src="https://placehold.co/200x150?text=Deal+4" alt="Deal 4" class="w-full h-auto object-cover rounded-md">
+                    <div class="mt-2">
+                        <span class="bg-red-700 text-white text-xs px-2 py-1 rounded-md">Up to 60% off</span>
+                        <p class="text-xs text-gray-500 mt-1">Deal of the day</p>
+                    </div>
+                </div>
+                    <div class="flex-shrink-0 w-48">
+                    <img src="https://placehold.co/200x150?text=Deal+5" alt="Deal 5" class="w-full h-auto object-cover rounded-md">
+                    <div class="mt-2">
+                        <span class="bg-red-700 text-white text-xs px-2 py-1 rounded-md">Up to 45% off</span>
+                        <p class="text-xs text-gray-500 mt-1">Top deals</p>
+                    </div>
+                </div>
+                    <div class="flex-shrink-0 w-48">
+                    <img src="https://placehold.co/200x150?text=Deal+6" alt="Deal 6" class="w-full h-auto object-cover rounded-md">
+                    <div class="mt-2">
+                        <span class="bg-red-700 text-white text-xs px-2 py-1 rounded-md">Up to 30% off</span>
+                        <p class="text-xs text-gray-500 mt-1">Deal of the day</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-4 rounded-lg shadow-md mt-6">
+            <h2 class="text-2xl font-bold mb-4">Shop by Brand</h2>
+            <div class="flex overflow-x-auto no-scrollbar space-x-4 py-2">
+                <a href="#" class="flex-shrink-0 w-32 h-20 bg-gray-100 rounded-md flex items-center justify-center border border-gray-300">
+                    <img src="https://placehold.co/100x40/d1d5db/black?text=Brand+A" alt="Brand A Logo">
+                </a>
+                <a href="#" class="flex-shrink-0 w-32 h-20 bg-gray-100 rounded-md flex items-center justify-center border border-gray-300">
+                    <img src="https://placehold.co/100x40/d1d5db/black?text=Brand+B" alt="Brand B Logo">
+                </a>
+                <a href="#" class="flex-shrink-0 w-32 h-20 bg-gray-100 rounded-md flex items-center justify-center border border-gray-300">
+                    <img src="https://placehold.co/100x40/d1d5db/black?text=Brand+C" alt="Brand C Logo">
+                </a>
+                <a href="#" class="flex-shrink-0 w-32 h-20 bg-gray-100 rounded-md flex items-center justify-center border border-gray-300">
+                    <img src="https://placehold.co/100x40/d1d5db/black?text=Brand+D" alt="Brand D Logo">
+                </a>
+                <a href="#" class="flex-shrink-0 w-32 h-20 bg-gray-100 rounded-md flex items-center justify-center border border-gray-300">
+                    <img src="https://placehold.co/100x40/d1d5db/black?text=Brand+E" alt="Brand E Logo">
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="bg-amazon-blue-light text-center py-4 mt-6">
+        <a href="#" class="text-white text-sm hover:underline">Back to top</a>
+    </div>
+
+    <footer class="bg-amazon-blue-dark text-white p-8 mt-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="font-bold mb-2">Get to Know Us</h4>
+                <ul class="text-sm space-y-1">
+                    <li><a href="#" class="hover:underline">About Us</a></li>
+                    <li><a href="#" class="hover:underline">Careers</a></li>
+                    <li><a href="#" class="hover:underline">Press Releases</a></li>
+                    <li><a href="#" class="hover:underline">Amazon Science</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Connect with Us</h4>
+                <ul class="text-sm space-y-1">
+                    <li><a href="#" class="hover:underline">Facebook</a></li>
+                    <li><a href="#" class="hover:underline">Twitter</a></li>
+                    <li><a href="#" class="hover:underline">Instagram</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Make Money with Us</h4>
+                <ul class="text-sm space-y-1">
+                    <li><a href="#" class="hover:underline">Sell on Amazon</a></li>
+                    <li><a href="#" class="hover:underline">Protect and Build Your Brand</a></li>
+                    <li><a href="#" class="hover:underline">Amazon Global Selling</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-2">Let Us Help You</h4>
+                <ul class="text-sm space-y-1">
+                    <li><a href="#" class="hover:underline">COVID-19 and Amazon</a></li>
+                    <li><a href="#" class="hover:underline">Your Account</a></li>
+                    <li><a href="#" class="hover:underline">Returns Centre</a></li>
+                    <li><a href="#" class="hover:underline">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-sm text-gray-400">
+            &copy; 1996-2024, Amazon.com, Inc. or its affiliates
+        </div>
+    </footer>
 </body>
 </html>
