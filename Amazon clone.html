@@ -6,7 +6,6 @@
     <title>Amazon.in Clone</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom colors to match Amazon's branding */
         :root {
             --amazon-blue-dark: #131921;
             --amazon-blue-light: #232f3e;
@@ -14,30 +13,25 @@
             --amazon-orange-hover: #f7ca00;
             --amazon-light-grey: #f1f2f3;
         }
-
-        .bg-amazon-blue-dark { background-color: var(--amazon-blue-dark); }
-        .bg-amazon-blue-light { background-color: var(--amazon-blue-light); }
-        .bg-amazon-orange { background-color: var(--amazon-orange); }
-        .hover\:bg-amazon-orange-hover:hover { background-color: var(--amazon-orange-hover); }
-        .bg-amazon-light-grey { background-color: var(--amazon-light-grey); }
-
-        /* Custom scrollbar for horizontal scrolling sections */
+        .bg-amazon-blue-dark { background-color: var(--amazon-blue-dark);}
+        .bg-amazon-blue-light { background-color: var(--amazon-blue-light);}
+        .bg-amazon-orange { background-color: var(--amazon-orange);}
+        .hover\:bg-amazon-orange-hover:hover { background-color: var(--amazon-orange-hover);}
+        .bg-amazon-light-grey { background-color: var(--amazon-light-grey);}
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
         .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
 <body class="bg-amazon-light-grey font-sans">
-
     <header class="bg-amazon-blue-dark text-white p-3 flex flex-wrap items-center justify-between space-x-4">
         <a href="#" class="font-bold text-2xl flex-shrink-0">
             <span class="text-white">amazon.in</span>
         </a>
-
         <div class="flex-grow flex items-center max-w-2xl bg-white rounded-md overflow-hidden">
             <select class="px-2 py-2 text-gray-700 bg-gray-200 border-l border-gray-300 focus:outline-none">
                 <option value="all">All</option>
@@ -51,7 +45,6 @@
                 </svg>
             </button>
         </div>
-
         <div class="flex items-center text-sm space-x-4 flex-shrink-0 mt-2 md:mt-0">
             <a href="#" class="flex flex-col">
                 <span class="text-xs">Hello, Sign in</span>
@@ -69,7 +62,6 @@
             </a>
         </div>
     </header>
-
     <nav class="bg-amazon-blue-light text-white p-2 text-sm">
         <ul class="flex overflow-x-auto no-scrollbar space-x-4 px-2 whitespace-nowrap">
             <li><a href="#" class="hover:underline">All</a></li>
@@ -82,7 +74,6 @@
             <li><a href="#" class="hover:underline">Home & Kitchen</a></li>
         </ul>
     </nav>
-
     <main class="container mx-auto p-4">
         <section class="relative h-64 md:h-96">
             <img src="https://plus.unsplash.com/premium_photo-1682096515837-81ef4d728980?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hero Banner" class="w-full h-full object-cover rounded-lg">
@@ -91,7 +82,6 @@
                 <a href="#" class="text-blue-400 hover:text-blue-200 text-sm">Click here to go to amazon.com</a>
             </div>
         </section>
-
         <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
             <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
                 <h3 class="text-xl font-semibold mb-4">Up to 70% off | Electronics</h3>
@@ -138,7 +128,6 @@
                 </div>
                 <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">Explore more</a>
             </div>
-
             <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
                 <h3 class="text-xl font-semibold mb-2">Sign in for your best experience</h3>
                 <button class="w-full bg-amazon-orange text-gray-900 font-bold py-2 rounded-md hover:bg-amazon-orange-hover transition-colors">
@@ -146,7 +135,6 @@
                 </button>
                 <a href="#" class="text-blue-500 hover:text-blue-700 mt-2 text-sm">New customer? Start here.</a>
             </div>
-            
             <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
                 <h3 class="text-xl font-semibold mb-4">Up to 65% off | Home appliances</h3>
                 <div class="flex-grow flex items-center justify-center">
@@ -154,7 +142,6 @@
                 </div>
                 <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">See more</a>
             </div>
-
             <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
                 <h3 class="text-xl font-semibold mb-4">Inspired by your Browse history</h3>
                 <div class="flex-grow flex items-center justify-center">
@@ -162,7 +149,6 @@
                 </div>
                 <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">View your recommendations</a>
             </div>
-
             <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
                 <h3 class="text-xl font-semibold mb-4">Top deals on Smart TVs</h3>
                 <div class="grid grid-cols-2 gap-2 flex-grow">
@@ -186,11 +172,9 @@
                 <a href="#" class="text-blue-500 hover:text-blue-700 mt-4 text-sm">Shop all TVs</a>
             </div>
         </section>
-
         <section class="my-6">
             <img src="https://placehold.co/1200x150/f0e0b4/black?text=Limited-time+Offer%3a+Shop+Now" alt="Offer Banner" class="w-full rounded-lg shadow-md">
         </section>
-
         <section class="bg-white p-4 rounded-lg shadow-md mt-6">
             <h2 class="text-2xl font-bold mb-4">Today's Deals</h2>
             <div class="flex overflow-x-auto no-scrollbar space-x-4 py-2">
@@ -238,7 +222,6 @@
                 </div>
             </div>
         </section>
-
         <section class="bg-white p-4 rounded-lg shadow-md mt-6">
             <h2 class="text-2xl font-bold mb-4">Shop by Brand</h2>
             <div class="flex overflow-x-auto no-scrollbar space-x-4 py-2">
@@ -259,13 +242,10 @@
                 </a>
             </div>
         </section>
-
     </main>
-
     <div class="bg-amazon-blue-light text-center py-4 mt-6">
         <a href="#" class="text-white text-sm hover:underline">Back to top</a>
     </div>
-
     <footer class="bg-amazon-blue-dark text-white p-8 mt-1">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <div>
